@@ -8,7 +8,7 @@ module.exports = {
     return db('resources')
       .insert(resource)
       .then(([id]) => {
-        return db('resource').where('resource_id', id);
+        return db('resources').where('resource_id', id);
       });
   },
 };
