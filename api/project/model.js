@@ -11,4 +11,12 @@ module.exports = {
         return db("projects").where("project_id", id);
       });
   },
+  getById(id) {
+    const projectObject = db("projects").where("project_id", id).first();
+    if(!projectObject) {
+      return null
+    } else {
+      return projectObject
+    }
+  }
 };

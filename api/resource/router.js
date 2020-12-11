@@ -24,9 +24,6 @@ const validateResource =  (req, res, next) => {
 router.get('/', (req, res) => {
   Resource.get()
     .then(resources => {
-      resources.forEach(resource => {
-        resource.completed = Boolean(resource.completed)
-      })
       res.json(resources);
     })
     .catch(e => {
@@ -37,8 +34,7 @@ router.get('/', (req, res) => {
 router.post('/', validateResource, (req, res) => {
   Resource.insert(req.body)
     .then(resource => {
-      resource[0].completed = Boolean(resource[0].completed)
-      res.json(resource);
+      res.json(resource[0]);
     })
     .catch(e => {
       res.status(500).json({ message: e.message });

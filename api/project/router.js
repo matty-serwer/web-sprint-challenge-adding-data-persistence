@@ -9,7 +9,7 @@ const Project = require('./model');
 // middlewares
 const validateProject =  (req, res, next) => {
   if (!req.body) {
-    res.status(400).json({ message: "Missing aproject data" });
+    res.status(400).json({ message: "Missing project data" });
   } else if (!req.body.name) {
     res
       .status(400)
@@ -38,7 +38,7 @@ router.post('/', validateProject, (req, res) => {
   Project.insert(req.body)
     .then(project => {
       project[0].completed = Boolean(project[0].completed)
-      res.json(project);
+      res.json(project[0]);
     })
     .catch(e => {
       res.status(500).json({ message: e.message });
