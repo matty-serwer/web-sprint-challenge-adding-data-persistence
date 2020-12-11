@@ -24,6 +24,9 @@ const validateProject =  (req, res, next) => {
 router.get('/', (req, res) => {
   Project.get()
     .then(projects => {
+      projects.forEach(project => {
+        project.completed = Boolean(project.completed)
+      })
       res.json(projects);
     })
     .catch(e => {
@@ -34,6 +37,7 @@ router.get('/', (req, res) => {
 router.post('/', validateProject, (req, res) => {
   Project.insert(req.body)
     .then(project => {
+      project[0].completed = Boolean(project[0].completed)
       res.json(project);
     })
     .catch(e => {
