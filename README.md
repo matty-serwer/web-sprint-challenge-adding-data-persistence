@@ -29,6 +29,7 @@ A **resource** is anything needed to complete a project and is stored in a `reso
 - [ ] `name` - required and unique
 - [ ] `description` - optional
 
+
 A **task** is one of the steps needed to complete a project and is stored in a `tasks` table. We want to store the following data about a task:
 
 - [ ] `id` - unique
